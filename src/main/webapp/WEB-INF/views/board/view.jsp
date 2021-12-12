@@ -76,6 +76,14 @@
         <li><a href="../board/travel">Travel</a></li><br><br>
         <a href="add" id="addpost">새글쓰기</a><a href="../login/logout" id="logout">Logout</a>
       </ul><br>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Blog..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
     </div>
 
     <div class="col-sm-9">

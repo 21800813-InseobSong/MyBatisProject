@@ -23,8 +23,8 @@
 	  					<hr>
 	  					<h2>${u.seq}</h2>
 	     			 	<h2>${u.title}</h2>
-					    <h5><span class="glyphicon glyphicon-time"></span> Post by ${u.writer}, ${u.regdate}. <span class="badge badge-primary">New</span> <span class="label label-primary" onclick="location.href='editform/${u.seq}'">글수정</span> <span class="label label-danger" onclick="javascript:delete_ok('${u.seq}')">글삭제</span></h5>
-					    <h5><span class="label label-danger">Category</span></h5><br>
+					    <h4><span class="glyphicon glyphicon-time"></span> Post by ${u.writer}, ${u.regdate}. <span class="badge badge-primary">New</span> <span class="label label-primary" onclick="location.href='editform/${u.seq}'">글수정</span> <span class="label label-danger" onclick="javascript:delete_ok('${u.seq}')">글삭제</span></h4>
+					    <h4><span class="label label-danger">${u.category}</span></h4><br>
 					    <img src="DSC03298.jpg" height="500" width="750">
 					    <p>${u.content}</p>
 					    <br><br>

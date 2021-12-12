@@ -10,7 +10,8 @@
 	<form action="addok" method="post">
 		<table id="edit">
 			<tr><td>제목</td><td><input type="text" name="title" /></td></tr>
-			<tr><td>글쓴이</td><td><input type="text" name="writer" /></td></tr>
+			<tr><td>글쓴이</td><td><input type="text" name="writer" value="${login.username}" /></td></tr>
+			<tr><td>카테고리</td><td><input type="radio" name="category" value="life" checked="checked" />Life <input type="radio" name="category" value="study" />Study <input type="radio" name="category" value="travel" />Travel</td></tr>
 			<tr><td>내용</td><td><textarea cols="50" rows="5" name="content" /></textarea></td></tr>
 		</table>
 		<button type="button" onclick="location.href='list'">목록보기</button>

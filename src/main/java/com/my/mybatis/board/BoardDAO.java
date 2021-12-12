@@ -47,6 +47,11 @@ public class BoardDAO {
 		return list;
 	}
 	
+	public List<BoardVO> getCategoryBoard(String category){
+		List<BoardVO> list = sqlSession.selectList("Board.getCategoryBoard", category);
+		return list;
+	}
+	
 	public String getPhotoFilename(int sid){
 		
 	}

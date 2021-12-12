@@ -13,6 +13,9 @@
 	<select id="getBoard" resultType="board">
 		select * from BOARD where seq=#{seq}
 	</select>
+	<select id="getCategoryBoard" resultType="board">
+		select * from BOARD where category=#{category} order by seq desc
+	</select>
 	<select id="getBoardList" resultType="board">
 		select * from BOARD order by seq desc
 	</select>
