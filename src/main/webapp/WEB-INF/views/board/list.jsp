@@ -19,15 +19,13 @@
 		<c:forEach items="${list}" var="u">
 			<div class="container-fluid">
   				<div class="row content">
-  					<div class="col-sm-9">
+  					<div class="col-sm-15">
 	  					<hr>
-	  					<h2>${u.seq}</h2>
 	     			 	<h2>${u.title}</h2>
 					    <h4><span class="glyphicon glyphicon-time"></span> Post by ${u.writer}, ${u.regdate}. <span class="badge badge-primary">New</span> <span class="label label-primary" onclick="location.href='editform/${u.seq}'">글수정</span> <span class="label label-danger" onclick="javascript:delete_ok('${u.seq}')">글삭제</span></h4>
-					    <h4><span class="label label-danger">${u.category}</span></h4><br>
+					    <h4><span class="label label-info">${u.category}</span></h4><br>
 					    <img src="DSC03298.jpg" height="500" width="750">
 					    <p>${u.content}</p>
-					    <br><br>
 				    </div>
 				 </div>
 			</div>

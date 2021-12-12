@@ -9,4 +9,6 @@ public interface BoardService {
 	public BoardVO getBoard(int seq);
 	public List<BoardVO> getBoardList();
 	public List<BoardVO> getCategoryBoard(String category);
+	public List<BoardVO> searchTitle(String title);
+	public List<BoardVO> searchContent(String content);
 }
