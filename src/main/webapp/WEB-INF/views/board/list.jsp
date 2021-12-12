@@ -15,27 +15,22 @@
 	}
 </script>
 <body>
-	<h1>게시판</h1>
 	<table id="list">
-		<tr>
-			<th>Id</th>
-			<th>Title</th>
-			<th>Writer</th>
-			<th>Regdate</th>
-			<th>Content</th>
-			<th>Edit</th>
-			<th>Delete</th>
-		</tr>
 		<c:forEach items="${list}" var="u">
-			<tr>
-				<td>${u.seq}</td>
-				<td>${u.title}</td>
-				<td>Post by ${u.writer}</td>
-				<td>${u.regdate}</td>
-				<td>${u.content}</td>
-				<td><a href="editform/${u.seq}">글수정</a></td>
-				<td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
-			</tr>
+			<div class="container-fluid">
+  				<div class="row content">
+  					<div class="col-sm-9">
+	  					<hr>
+	  					<h2>${u.seq}</h2>
+	     			 	<h2>${u.title}</h2>
+					    <h5><span class="glyphicon glyphicon-time"></span> Post by ${u.writer}, ${u.regdate}. <span class="badge badge-primary">New</span> <a href="editform/${u.seq}">글수정</a> <a href="javascript:delete_ok('${u.seq}')">글삭제</a></h5>
+					    <h5><span class="label label-danger">Category</span></h5><br>
+					    <img src="DSC03298.jpg" height="500" width="750">
+					    <p>${u.content}</p>
+					    <br><br>
+				    </div>
+				 </div>
+			</div>
 		</c:forEach>
 	</table>
 	<br/><button type="button" onclick="location.href='add'">새글쓰기</button>
