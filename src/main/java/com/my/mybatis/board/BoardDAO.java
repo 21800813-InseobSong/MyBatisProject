@@ -52,20 +52,10 @@ public class BoardDAO {
 		return list;
 	}
 	
-	public List<BoardVO> searchTitle(String title){
-		title = "%" + title + "%";
-		List<BoardVO> list = sqlSession.selectList("Board.searchTitle", title);
+	public List<BoardVO> searchContent(String item){
+		item = "%" + item + "%";
+		List<BoardVO> list = sqlSession.selectList("Board.searchContent", item);
 		return list;
-	}
-	
-	public List<BoardVO> searchContent(String content){
-		content = "%" + content + "%";
-		List<BoardVO> list = sqlSession.selectList("Board.searchContent", content);
-		return list;
-	}
-	
-	public String getPhotoFilename(int sid){
-		
 	}
 	
 	/*public int insertBoard(BoardVO vo) {

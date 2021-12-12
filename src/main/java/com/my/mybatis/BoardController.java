@@ -1,5 +1,7 @@
 package com.my.mybatis;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,6 +66,13 @@ public class BoardController {
 		else
 			System.out.println("데이터 삭제 성공!!");
 		return "redirect:../list";
+	}
+	
+	@RequestMapping(value = "board/search", method = RequestMethod.GET)
+	public String searchItem(HttpServletRequest httpServletRequest, Model model) {
+		String item = httpServletRequest.getParameter("item");
+		model.addAttribute("list", boardService.searchContent(item));
+		return "board/result";
 	}
 	
 	@RequestMapping(value = "/board/life", method = RequestMethod.GET)

@@ -42,13 +42,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> searchTitle(String title){
-		return boardDAO.searchTitle(title);
-	}
-	
-	@Override
-	public List<BoardVO> searchContent(String Content){
-		return boardDAO.searchContent(Content);
+	public List<BoardVO> searchContent(String item){
+		return boardDAO.searchContent(item);
 	}
 
 }

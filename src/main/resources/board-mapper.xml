@@ -19,10 +19,7 @@
 	<select id="getBoardList" resultType="board">
 		select * from BOARD order by seq desc
 	</select>
-	<select id="searchTitle" resultType="board">
-		select * from BOARD where title like '#{title}' order by seq desc
-	</select>
 	<select id="searchContent" resultType="board">
-		select * from BOARD where content like '#{content}' order by seq desc
+		select * from BOARD where content like #{item} order by seq desc
 	</select>
 </mapper>
