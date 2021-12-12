@@ -54,6 +54,10 @@
 	      }
 	      .row.content {height: auto;} 
 	    }
+	    
+	    #addpost{
+	    	background-color: 
+	    }
 	</style>
 </head>
 <body>
@@ -64,21 +68,14 @@
 	<div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
-      <h4>Inseob's Blog</h4>
+      <h4>Personal Blog</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Home</a></li>
-        <li><a href="#section2">Friends</a></li>
-        <li><a href="#section3">Family</a></li>
-        <li><a href="#section3">Photos</a></li>
+        <li><a href="../board/list">Home</a></li>
+        <li><a href="../board/life">Life</a></li>
+        <li><a href="../board/study">Study</a></li>
+        <li><a href="../board/travel">Travel</a></li><br><br>
+        <a href="add" id="addpost">새글쓰기</a><a href="../login/logout" id="logout">Logout</a>
       </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
     </div>
 
     <div class="col-sm-9">
