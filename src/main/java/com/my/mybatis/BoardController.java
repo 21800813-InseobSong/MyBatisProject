@@ -1,13 +1,19 @@
 package com.my.mybatis;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.my.mybatis.board.BoardVO;
 import com.my.mybatis.board.BoardService;
@@ -31,7 +37,17 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="board/addok", method=RequestMethod.POST)
-	public String addPostOK(BoardVO vo) {
+	public String addPostOK(BoardVO vo) throws IOException {
+		String fileName = null;
+		MultipartFile uploadFile = vo.getUploadFile();
+		if(!uploadFile.isEmpty()) {
+			String originalFileName = uploadFile.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);
+			UUID uuid = UUID.randomUUID();
+			fileName = uuid + "." + ext;
+			uploadFile.transferTo(new File("C:\\STS4\\" + fileName));
+		}
+		vo.setFilename(fileName);
 		int i = boardService.insertBoard(vo);
 		if(i==0)
 			System.out.println("데이터 추가 실패");

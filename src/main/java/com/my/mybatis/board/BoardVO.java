@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
 	private int seq;
@@ -14,6 +15,8 @@ public class BoardVO {
 	private Date regdate;
 	private int cnt;
 	private String category;
+	private String filename;
+	private MultipartFile uploadFile;
 	
 	public int getSeq() {
 		return seq;
@@ -58,5 +61,21 @@ public class BoardVO {
 	
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+	
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 }
