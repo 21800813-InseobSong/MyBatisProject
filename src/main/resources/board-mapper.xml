@@ -5,7 +5,7 @@
 		insert into BOARD (category, title, writer, content, filename) values (#{category} , #{title} , #{writer} , #{content}, #{filename})
 	</insert>
 	<update id="updateBoard">
-		update BOARD set title=#{title}, content=#{content}, writer=#{writer}, category=#{category} where seq=#{seq}
+		update BOARD set title=#{title}, content=#{content}, writer=#{writer}, category=#{category}, filename=#{filename} where seq=#{seq}
 	</update>
 	<delete id="deleteBoard">
 		delete from BOARD where seq=#{seq}
