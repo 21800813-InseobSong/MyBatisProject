@@ -23,6 +23,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int updateBoard(BoardVO vo) {
+		System.out.println(vo.getFilename());
 		return boardDAO.updateBoard(vo);
 	}
 

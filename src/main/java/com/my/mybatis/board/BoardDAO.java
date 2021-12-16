@@ -33,6 +33,7 @@ public class BoardDAO {
 	}
 	
 	public int updateBoard(BoardVO vo) {
+		System.out.println(vo.getFilename());
 		int result = sqlSession.update("Board.updateBoard", vo);
 		return result;
 	}

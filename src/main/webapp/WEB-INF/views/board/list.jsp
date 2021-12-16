@@ -24,7 +24,10 @@
 	     			 	<h2>${u.title}</h2>
 					    <h4><span class="glyphicon glyphicon-time"></span> Post by ${u.writer}, ${u.regdate}. <span class="badge badge-primary">New</span> <span class="label label-primary" onclick="location.href='editform/${u.seq}'">글수정</span> <span class="label label-danger" onclick="javascript:delete_ok('${u.seq}')">글삭제</span></h4>
 					    <h4><span class="label label-info">${u.category}</span></h4><br>
-					    <img src="${u.filename}" height="500" width="750">
+					    <img src="../upload/${u.filename}" height="400" width="600">
+					    <c:if test="${board.fileName}">
+								<a href="board/list?fileName=${u.fileName}">${board.fileName}</a></td>
+						</c:if>
 					    <p>${u.content}</p>
 				    </div>
 				 </div>

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.my.mybatis.board.BoardVO;
 import com.my.mybatis.board.BoardService;
@@ -37,7 +39,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="board/addok", method=RequestMethod.POST)
-	public String addPostOK(BoardVO vo) throws IOException {
+	public String addPostOK(BoardVO vo, HttpServletRequest request) throws IOException {
 		String fileName = null;
 		MultipartFile uploadFile = vo.getUploadFile();
 		if(!uploadFile.isEmpty()) {
@@ -45,7 +47,8 @@ public class BoardController {
 			String ext = FilenameUtils.getExtension(originalFileName);
 			UUID uuid = UUID.randomUUID();
 			fileName = uuid + "." + ext;
-			uploadFile.transferTo(new File("C:\\STS4\\" + fileName));
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload");
+			uploadFile.transferTo(new File(saveDir+ "/" + fileName));
 		}
 		vo.setFilename(fileName);
 		int i = boardService.insertBoard(vo);
@@ -64,9 +67,27 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="board/editok", method=RequestMethod.POST)
-	public String editPostOK(BoardVO vo) {
+	public String editPostOK(BoardVO vo, MultipartHttpServletRequest request) {
+		MultipartFile mf = request.getFile("uploadFile");
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload");
+		if(!mf.isEmpty()) {
+			String fileName = null;
+			String originalFileName = mf.getOriginalFilename();
+			String ext = FilenameUtils.getExtension(originalFileName);
+			UUID uuid = UUID.randomUUID();
+			fileName = uuid + "." + ext;
+			File uploadFile = new File(saveDir + "/" + fileName);
+			try {
+				mf.transferTo(uploadFile);
+			}catch(IllegalStateException e) {
+				e.printStackTrace();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+			vo.setFilename(fileName);
+		}
 		int i = boardService.updateBoard(vo);
-		System.out.println(vo.getSeq() + " " + vo.getContent());
+		System.out.println(vo.getSeq() + " " + vo.getContent() + " " + vo.getFilename());
 		if(i==0)
 			System.out.println("데이터 수정 실패");
 		else
